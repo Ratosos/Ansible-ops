@@ -20,6 +20,6 @@ jobs:
 #          rolesPath: ".ansible/playbooks/roles"
 #          keyFile: ".ansible/random-ssh-key.pem"
 #          keyFileVaultPass: ${{ secrets.KEYFILE_VAULT_PASS }}
-          extraFile: "Ansible/extra.yml"
+#          extraFile: "Ansible/extra.yml"
 #          extraVars: "-e my_first_extra=${{ github.actor }} -e my_second_one=${{ github.sha }}"
           verbosity: "vvv"
