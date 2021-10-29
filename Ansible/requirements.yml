@@ -1,1 +1,2 @@
-- src: azure.azcollection
+- src: https://galaxy.ansible.com/download/community-azure-1.0.0.tar.gz
+  name: Azure
