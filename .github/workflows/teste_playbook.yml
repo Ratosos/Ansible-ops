@@ -22,4 +22,4 @@ jobs:
 #          keyFileVaultPass: ${{ secrets.KEYFILE_VAULT_PASS }}
 #          extraFile: "Ansible/extra.yml"
 #          extraVars: "-e my_first_extra=${{ github.actor }} -e my_second_one=${{ github.sha }}"
-          verbosity: "vvvvvv"
+          verbosity: "vvv"
