@@ -16,7 +16,7 @@ jobs:
         with:
           playbookName: "Ansible/Playbook/create_linux.yml"
 #          inventoryFile: ".ansible/inventory/local.yml"
-#          requirementsFile: ".ansible/requirements.yml"
+          requirementsFile: "Ansible/requirements.yml"
 #          rolesPath: ".ansible/playbooks/roles"
 #          keyFile: ".ansible/random-ssh-key.pem"
 #          keyFileVaultPass: ${{ secrets.KEYFILE_VAULT_PASS }}
