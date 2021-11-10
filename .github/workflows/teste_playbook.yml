@@ -13,10 +13,6 @@ jobs:
         env:
           ANSIBLE_STDOUT_CALLBACK: debug
           ANSIBLE_FORCE_COLOR: true
-          AZURE_SUB: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          AZURE_CLI: ${{ secrets.AZURE_CLIENT_ID }}
-          AZURE_SEC: ${{ secrets.AZURE_SECRET }}
-          AZURE_TEN: ${{ secrets.AZURE_TENANT }}
         with:
           playbookName: "Ansible/Playbook/create_linux.yml"
 #          inventoryFile: ".ansible/inventory/local.yml"
@@ -26,4 +22,8 @@ jobs:
 #          keyFileVaultPass: ${{ secrets.KEYFILE_VAULT_PASS }}
 #          extraFile: "Ansible/extra.yml"
 #          extraVars: "-e my_first_extra=${{ github.actor }} -e my_second_one=${{ github.sha }}"
+          AZURE_SUB: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          AZURE_CLI: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_SEC: ${{ secrets.AZURE_SECRET }}
+          AZURE_TEN: ${{ secrets.AZURE_TENANT }}
           verbosity: "vvv"
