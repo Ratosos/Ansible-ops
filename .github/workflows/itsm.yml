@@ -1,0 +1,20 @@
+name: ITSM
+
+on:
+  repository_dispatch:
+    types: ["abracadabra"]
+
+env:
+  var1: ${{ github.event.client_payload.exemplo1 }}
+  var2: ${{ github.event.client_payload.exemplo2 }}
+
+jobs:
+  show-id:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: show id
+        run: |
+          echo "EXEMPLO1 is $var1"
+          echo "EXEMPLO2 is $var2"
+          
