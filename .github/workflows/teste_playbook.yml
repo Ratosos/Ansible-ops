@@ -12,8 +12,9 @@ jobs:
         AZURE_SEC: ${{ secrets.AZURE_SECRET }}
         AZURE_TEN: ${{ secrets.AZURE_TENANT }}
     steps:
+      - uses: actions/checkout@v2
       - run: |
-         cd /github/home
+         cd /ansible/Playbook
          ls
 
 #jobs:
