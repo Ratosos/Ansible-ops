@@ -13,7 +13,7 @@ jobs:
         AZURE_TEN: ${{ secrets.AZURE_TENANT }}
     steps:
       - run: |
-         cd /github/workspace
+         cd /github/home
          ls
 
 #jobs:
