@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -e
-
+echo ${batatas}
 # Evaluate verbosity
 export VERBOSITY="-vvv"
 export INPUT_PLAYBOOKNAME="Ansible/Playbook/create_linux.yml"
