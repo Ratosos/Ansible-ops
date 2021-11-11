@@ -13,8 +13,8 @@ jobs:
         AZURE_TEN: ${{ secrets.AZURE_TENANT }}
     steps:
       - run: |
-         echo $AZURE_SUB
-         echo It runs in the container instead of the VM.
+         cd /github/workspace
+         ls
 
 #jobs:
 #  ansible_playbook_job:
