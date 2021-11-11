@@ -1,5 +1,5 @@
 name: Ansible Playbook
-on: [push]
+on: workflow_dispatch
 
 jobs:
   my_job:
