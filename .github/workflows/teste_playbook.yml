@@ -11,6 +11,7 @@ jobs:
         AZURE_CLI: ${{ secrets.AZURE_CLIENT_ID }}
         AZURE_SEC: ${{ secrets.AZURE_SECRET }}
         AZURE_TEN: ${{ secrets.AZURE_TENANT }}
+        batatas: cenouras
     steps:
       - uses: actions/checkout@v2
       - run: |
