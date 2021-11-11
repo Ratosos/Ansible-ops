@@ -14,7 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-         ls
+         chmod +x entrypoint.sh
+         ./entrypoint.sh
 
 #jobs:
 #  ansible_playbook_job:
