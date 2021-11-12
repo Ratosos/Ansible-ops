@@ -25,9 +25,9 @@
   - name: Add subnet
     azure_rm_subnet:
       resource_group: "{{ resource_group }}"
-      name: "{{ vm_name }}"
+      name: "{{ vm_name }}-subnet"
       address_prefix: "10.0.1.0/24"
-      virtual_network: "{{ vm_name }}-subnet"
+      virtual_network: "{{ vm_name }}-ne-vnet"
   - name: Create public IP address
     azure_rm_publicipaddress:
       resource_group: "{{ resource_group }}"
@@ -48,10 +48,10 @@
     azure_rm_networkinterface:
       resource_group: "{{ resource_group }}"
       name: "{{ vm_name }}-int"
-      virtual_network: "{{ vm_name }}"
-      subnet: "{{ vm_name }}"
-      public_ip_name: "{{ vm_name }}"
-      security_group: "{{ vm_name }}"
+      virtual_network: "{{ vm_name }}-ne-vnet"
+      subnet: "{{ vm_name }}-subnet"
+      public_ip_name: "{{ vm_name }}-publicip"
+      security_group: "{{ vm_name }}-nsg"
   - name: Create VM
     azure_rm_virtualmachine:
       resource_group: "{{ resource_group }}"
