@@ -8,9 +8,10 @@
     - azure.azcollection
   connection: local
   vars:
-    resource_group: teste
-    vm_name: testvm
-    location: eastus
+    resource_group: "{{ lookup('env', 'VMNAME') }}-ne-rg"
+    vm_name: "{{ lookup('env', 'VMNAME') }}"
+    location: "{{ lookup('env', 'LOCATION') }}"
+    size: "{{ lookup('env', 'SIZE') }}"
   tasks:
   - name: Create a resource group
     azure_rm_resourcegroup:
@@ -19,23 +20,23 @@
   - name: Create virtual network
     azure_rm_virtualnetwork:
       resource_group: "{{ resource_group }}"
-      name: "{{ vm_name }}"
+      name: "{{ vm_name }}-ne-vnet"
       address_prefixes: "10.0.0.0/16"
   - name: Add subnet
     azure_rm_subnet:
       resource_group: "{{ resource_group }}"
       name: "{{ vm_name }}"
       address_prefix: "10.0.1.0/24"
-      virtual_network: "{{ vm_name }}"
+      virtual_network: "{{ vm_name }}-subnet"
   - name: Create public IP address
     azure_rm_publicipaddress:
       resource_group: "{{ resource_group }}"
       allocation_method: Static
-      name: "{{ vm_name }}"
+      name: "{{ vm_name }}-publicip"
   - name: Create Network Security Group that allows SSH
     azure_rm_securitygroup:
       resource_group: "{{ resource_group }}"
-      name: "{{ vm_name }}"
+      name: "{{ vm_name }}-nsg"
       rules:
         - name: SSH
           protocol: Tcp
@@ -43,10 +44,10 @@
           access: Allow
           priority: 1001
           direction: Inbound
-  - name: Create virtual network inteface card
+  - name: Create virtual network interface card
     azure_rm_networkinterface:
       resource_group: "{{ resource_group }}"
-      name: "{{ vm_name }}"
+      name: "{{ vm_name }}-int"
       virtual_network: "{{ vm_name }}"
       subnet: "{{ vm_name }}"
       public_ip_name: "{{ vm_name }}"
@@ -55,11 +56,11 @@
     azure_rm_virtualmachine:
       resource_group: "{{ resource_group }}"
       name: "{{ vm_name }}"
-      vm_size: Standard_DS1_v2
+      vm_size: "{{ size }}"
       managed_disk_type: Standard_LRS
       admin_username: azureuser
       admin_password: Password@123
-      network_interfaces: "{{ vm_name }}"
+      network_interfaces: "{{ vm_name }}-int"
       image:
         offer: UbuntuServer
         publisher: Canonical
