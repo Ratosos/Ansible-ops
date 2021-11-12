@@ -1,6 +1,7 @@
 name: Ansible Playbook
-on: workflow_dispatch
-
+on:
+  repository_dispatch:
+    types: [abracadabra]
 jobs:
   my_job:
     runs-on: ubuntu-latest
@@ -11,6 +12,8 @@ jobs:
         AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
         AZURE_SECRET: ${{ secrets.AZURE_SECRET }}
         AZURE_TENANT: ${{ secrets.AZURE_TENANT }}
+        VMNAME: ${{ github.event.client_payload.vmname }}
+        LOCATION: ${{ github.event.client_payload.location }}
     steps:
       - uses: actions/checkout@v2
       - run: |
