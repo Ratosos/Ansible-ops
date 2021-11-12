@@ -1,7 +1,7 @@
 name: ITSM
 
 on:
-  workflow_dispatch:
+  repository_dispatch:
     types: [abracadabra]
 
 env:
