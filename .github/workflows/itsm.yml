@@ -2,7 +2,7 @@ name: ITSM
 
 on:
   repository_dispatch:
-    types: ["abracadabra"]
+    types: [abracadabra]
 
 env:
   var1: ${{ github.event.client_payload.exemplo1 }}
